@@ -7,7 +7,7 @@ import morgan from "morgan"
 
 class ServerApi {
     public app: express.Application = express()
-    public port: number = 3004
+    public port: number = 3005
 
     constructor() {
         this.app.use(express.json())

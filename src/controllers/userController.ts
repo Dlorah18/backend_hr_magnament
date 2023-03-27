@@ -3,11 +3,10 @@ import { UserServices } from "../services/userServices";
 
 export class UserController{
 
-    Login(req:Request,res:Response){
-
-        res.status(200).json(
-            {
-                data:new UserServices().Login(req,res)
-            })
+    async Login(req:Request,res:Response){
+        let responseLogin=await new UserServices().Login(req.body.usuario,req.body.password)
+        console.log("Planet Name :- " + responseLogin);
+        console.log(responseLogin)
+        res.json(responseLogin)
     }
 }

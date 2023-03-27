@@ -1,26 +1,38 @@
-import { Request, Response } from "express";
+//import { Request } from "express";
+//import { Database } from "../databases/databases";
+//import { MysqlError } from "mysql";
+import * as crypto from 'crypto-js';
 import { Database } from "../databases/databases";
-import { MysqlError } from "mysql";
-
+import { usuarioLogin, ApiResponse } from "../tsResponces"
 export class UserServices {
-    public id: number;
 
-    constructor() {
-        this.id = 1;
-
-    }
-    public Login(req: Request, res: Response) {
-        new Database().getConnection().query("INSERT INTO articles SET ?", req.body, (err: MysqlError | null, result: any) => {
-            if (err) {
-                console.error(err)
-                res.status(500).end()
-                return 
-            }
-
-            req.body.id = result.insertId
-        }
-        )
-        //return res.status(200).json(req.body).end()
-        return [200,req.body]
+    public Login(usuario: string, pass: string) {
+        console.log(usuario)
+        const conexion = new Database().getConnection();
+        const consulta = `SELECT * FROM usuario WHERE user = '${usuario}'`;
+        return new Promise((resolve, reject) => {
+            conexion.query(consulta, (err, resultados) => {
+                conexion.end();
+                console.log(err)
+                if (err) {
+                    reject(err);
+                    console.log("aqui2")
+                } else if (resultados.length === 0) {
+                    resolve(null);
+                } else {
+                    let data: usuarioLogin
+                    let response: ApiResponse<usuarioLogin>
+                    if (crypto.MD5(pass).toString() === resultados[0].password) {
+                        data = { "id": resultados[0].id, "nombres": resultados[0].nombres, "apellidos": resultados[0].apellidos, "rol": resultados[0].rol, "estado": resultados[0].estado }
+                        response={ "message": "Logueado", "data": data, "status": 200 }
+                        resolve(response)
+                    }else{
+                        response={ "message": "Credenciales Invalidas", "status": 401,"error":"Credenciales Invalidas" }
+                        resolve(response)
+                    }
+                    
+                }
+            });
+        });
     }
 }
