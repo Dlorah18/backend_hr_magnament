@@ -13,21 +13,21 @@ export class UserServices {
         return new Promise((resolve, reject) => {
             conexion.query(consulta, (err, resultados) => {
                 conexion.end();
-                console.log(err)
                 if (err) {
                     reject(err);
-                    console.log("aqui2")
                 } else if (resultados.length === 0) {
+                    let response={ "message": "El Usuario no existe", "status": 404,"error":true }
+                    resolve(response)
                     resolve(null);
                 } else {
                     let data: usuarioLogin
                     let response: ApiResponse<usuarioLogin>
                     if (crypto.MD5(pass).toString() === resultados[0].password) {
                         data = { "id": resultados[0].id, "nombres": resultados[0].nombres, "apellidos": resultados[0].apellidos, "rol": resultados[0].rol, "estado": resultados[0].estado }
-                        response={ "message": "Logueado", "data": data, "status": 200 }
+                        response={ "message": "OK", "data": data, "status": 200,"error":false }
                         resolve(response)
                     }else{
-                        response={ "message": "Credenciales Invalidas", "status": 401,"error":"Credenciales Invalidas" }
+                        response={ "message": "Credenciales Invalidas", "status": 401,"error":true }
                         resolve(response)
                     }
                     

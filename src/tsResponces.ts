@@ -12,6 +12,7 @@ export interface Usuario {
     razon_bloqueo?: string
     conteo?: number
     estado:string
+    
 }
 
 export type  usuarioLogin =Pick<Usuario,'id'|'nombres'|'apellidos'|'rol'|'estado'|'conteo'>
@@ -19,6 +20,6 @@ export type  usuarioLogin =Pick<Usuario,'id'|'nombres'|'apellidos'|'rol'|'estado
 export interface ApiResponse<T> {
     message: string;
     data?: T;
-    error?: string;
+    error?: boolean;
     status:number
 }
