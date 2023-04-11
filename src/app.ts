@@ -1,7 +1,7 @@
 import "dotenv/config"
 import express from 'express'
 import cors from 'cors'
-import { UserRouter } from "./routes/userRoute"
+import { UserRouter } from "./routes/usuario/userRoute"
 import morgan from "morgan"
 
 class ServerApi {

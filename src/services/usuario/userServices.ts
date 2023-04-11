@@ -1,7 +1,7 @@
 
 import * as crypto from 'crypto-js';
-import { Database } from "../databases/databases";
-import { usuarioLogin, ApiResponse, Usuario } from "../tsResponces"
+import { Database } from "../../databases/databases";
+import { usuarioLogin, ApiResponse, Usuario } from "../../tsResponces"
 import { Connection } from 'mysql';
 export class UserServices {
     private conexion: Connection;
