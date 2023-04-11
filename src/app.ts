@@ -4,10 +4,9 @@ import cors from 'cors'
 import { UserRouter } from "./routes/userRoute"
 import morgan from "morgan"
 
-
 class ServerApi {
     public app: express.Application = express()
-    public port: number = 3005
+    public port: number=Number(process.env.PORT_SERVICE||3000)
 
     constructor() {
         this.app.use(express.json())
