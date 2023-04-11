@@ -1,21 +1,21 @@
 
 export interface Usuario {
     id: number
-    password: string
-    username: string
-    nombres: string
-    apellidos: string
-    email: string
-    rol: number
+    password?: string
+    username?: string
+    nombres?: string
+    apellidos?: string
+    email?: string
+    rol?: number
     fechaCreacion?: Date
     fecha_bloqueo?: Date
     razon_bloqueo?: string
     conteo?: number
-    estado:string
+    estado?:string
     
 }
 
-export type  usuarioLogin =Pick<Usuario,'id'|'nombres'|'apellidos'|'rol'|'estado'|'conteo'>
+export type  usuarioLogin =Pick<Usuario,'id'>
 
 export interface ApiResponse<T> {
     message: string;

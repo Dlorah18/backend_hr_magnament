@@ -7,4 +7,8 @@ export class UserController{
         let responseLogin:any=await new UserServices().Login(req.body.usuario,req.body.password)
         res.status(responseLogin["status"]).json(responseLogin)
     }
+    async userData(req:Request,res:Response){
+        let response:any=await new UserServices().userData(req.body.idUser)
+        res.status(response["status"]).json(response)
+    }
 }

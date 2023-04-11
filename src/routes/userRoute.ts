@@ -6,6 +6,7 @@ export class UserRouter extends BaseRouter<UserController>{
         super(UserController)
     }
     route(): void {
-        this.router.post('/ListarUsuario',(req,res)=>this.controllate.Login(req,res))
+        this.router.post('/Login',(req,res)=>this.controllate.Login(req,res))
+        this.router.post('/UserData',(req,res)=>this.controllate.userData(req,res))
     }
 }
