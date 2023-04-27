@@ -1,7 +1,8 @@
 import "dotenv/config"
 import express from 'express'
 import cors from 'cors'
-import { UserRouter } from "./routes/usuario/userRoute"
+import { UserRouter } from "./routes/UserRoute"
+import {AdministratorRoute} from "./routes/AdministratorRoutes"
 import morgan from "morgan"
 
 class ServerApi {
@@ -17,7 +18,7 @@ class ServerApi {
     }
 
     routers():Array<express.Router> {
-        return [new UserRouter().router]
+        return [new UserRouter().router,new AdministratorRoute().router]
     }
     public listen() {
         this.app.listen(this.port, () => {

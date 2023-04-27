@@ -6,7 +6,8 @@ export interface Usuario {
     nombres?: string
     apellidos?: string
     email?: string
-    rol?: number
+    idRol?: number
+    nomRol?:string
     fechaCreacion?: Date
     fecha_bloqueo?: Date
     razon_bloqueo?: string
@@ -15,11 +16,13 @@ export interface Usuario {
     
 }
 
+export const people: Usuario[] = [];
+
 export type  usuarioLogin =Pick<Usuario,'id'>
 
 export interface ApiResponse<T> {
     message: string;
-    data?: T;
+    data?: T[];
     error?: boolean;
     status:number
 }
