@@ -37,8 +37,8 @@ export class UserServices {
                     reject(err);
                 } else {
                     let data: Usuario;
-                    data = { "id":resultados[0].idUser,"nombres":resultados[0].namesUser,"apellidos":resultados[0].lastnameUser,"idRol":resultados[0].idRol,"nomRol":resultados[0].nameRol}
-                    response = { "message": "OK", "data": data, "status": 200, "error": false }
+                    data = { "id":resultados[0].idUser,"nombres":resultados[0].namesUser,"apellidos":resultados[0].lastnameUser,"idRol":resultados[0].idRol,"nomRol":resultados[0].nomRol}
+                    response = { "message": "OK", "data": [data], "status": 200, "error": false }
                     resolve(response)
                 }
             });
@@ -53,7 +53,7 @@ export class UserServices {
                 if(resultados[0].stateUser=='Activo'){
                     let data: usuarioLogin;
                     data = { "id": resultados[0].idUser }
-                    response = { "message": "OK", "data": data, "status": 200, "error": false }
+                    response = { "message": "OK", "data": [data], "status": 200, "error": false }
                 }else{
                     response = { "message": "El Usuario se encuentra Bloqueado", "status": 404, "error": true }
                 }  
