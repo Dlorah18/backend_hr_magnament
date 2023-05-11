@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserRouter = void 0;
 const index_1 = require("./index");
-const UserController_1 = require("../controllers/UserController");
+const UserController_1 = require("../controllers/userController");
 class UserRouter extends index_1.BaseRouter {
     constructor() {
         super(UserController_1.UserController);
