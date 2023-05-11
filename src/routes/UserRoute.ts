@@ -1,5 +1,5 @@
 import { BaseRouter } from "./index";
-import { UserController } from "../controllers/userController"
+import { UserController } from "../controllers/UserController"
 
 export class UserRouter extends BaseRouter<UserController>{
     constructor(){
