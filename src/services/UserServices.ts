@@ -11,10 +11,10 @@ export class UserServices {
         this.conexion = new Database().getConnection();
     }
 
-    public Login(usuario: string, pass: string) {
+    public Login(usuario: number, pass: string) {
         let response;
         this.pass = pass
-        const consulta = `SELECT * FROM v_usuario WHERE username = '${usuario}'`;
+        const consulta = `SELECT * FROM v_usuario WHERE idUser= ${usuario}`;
         return new Promise((resolve, reject) => {
             this.conexion.query(consulta, (err: any, resultados: any[]) => {
                 this.conexion.end();

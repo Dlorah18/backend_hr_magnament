@@ -6,7 +6,8 @@ export class Database{
     private host:string=String(process.env.HOST_DB||'localhost')
     private user:string=String(process.env.USER_DB||'root')
     private password:string=String(process.env.PASS_DB||'')
-    private database:string=String(process.env.DATABASE_DB||'hr_magnament')
+    private database:string=String(process.env.DATABASE_DB||'hr_magnament_prod')
+    private port:number=Number(process.env.PORT_DB||'3306')
     
 
     constructor(){
@@ -14,6 +15,7 @@ export class Database{
             host     : this.host,
             user     : this.user,
             password : this.password,
+            port     : this.port,
             database : this.database
           });
     }
